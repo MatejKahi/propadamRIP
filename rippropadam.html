@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="heading">Am I Failing?</h1>
+    <div id="grades">
+        <div class="grade">
+            <label class="gradeName">grade1</label>
+            <input type="number" class="gradeValue">
+            <input type="number" class="gradeWeight">
+        </div>
+    </div>
+
+    <div>
+        <button onclick="addGrade()">Add grade</button>
+        <button onclick="calc()">Calculate</button>
+    </div>
+    <div>
+        <span>Am I Failing?</span>
+    </div>
+    <div>
+        <span>Avarage: </span> <span id="avg">0</span>
+    </div>
+</div>
+</body>
+
+</html>
+
+
+<script>
+    function addGrade() {
+        const gradeRow = document.querySelector('.grade');
+        const newGradeRow = gradeRow.cloneNode(true);
+        const count = document.querySelectorAll('.grade').length + 1;
+        newGradeRow.firstElementChild.innerHTML = "grade" + count;
+        document.querySelector('#grades').appendChild(newGradeRow.cloneNode(true));
+    }
+
+    function calc() {
+
+        const rows = document.querySelectorAll('.grade');
+        let totalImp = 0;
+        let totalWeight = 0;
+        for (let i = 0; i < rows.length; i++) {
+            const grade = parseInt(rows[i].getElementsByClassName('gradeValue')[0].value);
+            const weight = parseInt(rows[i].getElementsByClassName('gradeWeight')[0].value);
+            const imp = grade * weight;
+            totalImp += imp;
+            totalWeight += weight;
+        }
+        const avg = totalImp / totalWeight;
+        result(avg);
+    }
+
+    function result(avg) {
+        const fail = 50;
+        document.querySelector('#fail').innerHTML = (avg > fail) ? 'NO' : 'YES';
+        document.querySelector('#avg').innerHTML = avg.toFixed(2);
+    }
+</script>
+</body>
+</html>

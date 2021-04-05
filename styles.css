@@ -1,0 +1,14 @@
+
+body{
+    background: #c1ceff;
+}
+
+
+
+.container {
+    max-width: 1400px;
+    margin: 100px auto;
+    border: 3px #9e91ff;
+    padding: 10px 50px;
+    background: #aab0ff;
+}
