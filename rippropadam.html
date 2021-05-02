@@ -21,17 +21,12 @@
         <button onclick="calc()">Calculate</button>
     </div>
     <div>
-        <span>Am I Failing?</span>
+        <span>Am I Failing? </span> <span id="fail"></span>
     </div>
     <div>
         <span>Avarage: </span> <span id="avg">0</span>
     </div>
 </div>
-</body>
-
-</html>
-
-
 <script>
     function addGrade() {
         const gradeRow = document.querySelector('.grade');
@@ -44,16 +39,16 @@
     function calc() {
 
         const rows = document.querySelectorAll('.grade');
-        let totalImp = 0;
+        let totalMult = 0;
         let totalWeight = 0;
         for (let i = 0; i < rows.length; i++) {
             const grade = parseInt(rows[i].getElementsByClassName('gradeValue')[0].value);
             const weight = parseInt(rows[i].getElementsByClassName('gradeWeight')[0].value);
-            const imp = grade * weight;
-            totalImp += imp;
+            const mult = grade * weight;
+            totalMult += mult;
             totalWeight += weight;
         }
-        const avg = totalImp / totalWeight;
+        const avg = totalMult / totalWeight;
         result(avg);
     }
 
